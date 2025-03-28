@@ -8,6 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TTT_BusinessDataLogic\**" />
+    <EmbeddedResource Remove="TTT_BusinessDataLogic\**" />
+    <None Remove="TTT_BusinessDataLogic\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\TTT_BusinessDataLogic\TTT_BusinessDataLogic.csproj" />
   </ItemGroup>
 

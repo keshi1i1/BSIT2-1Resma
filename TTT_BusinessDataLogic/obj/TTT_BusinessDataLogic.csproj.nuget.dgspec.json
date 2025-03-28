@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj": {}
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj": {
+    "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj",
+        "projectUniqueName": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj",
         "projectName": "TTT_BusinessDataLogic",
-        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj",
+        "projectPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_BusinessDataLogic\\TTT_BusinessDataLogic.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\TTT_BusinessDataLogic\\obj\\",
+        "outputPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_BusinessDataLogic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
