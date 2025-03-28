@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe.csproj", "{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTT_BusinessDataLogic", "..\TTT_BusinessDataLogic\TTT_BusinessDataLogic.csproj", "{643834A5-593A-4773-BD40-456BFB95AD59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{643834A5-593A-4773-BD40-456BFB95AD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{643834A5-593A-4773-BD40-456BFB95AD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{643834A5-593A-4773-BD40-456BFB95AD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{643834A5-593A-4773-BD40-456BFB95AD59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
