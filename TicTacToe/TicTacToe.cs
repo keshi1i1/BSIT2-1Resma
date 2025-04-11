@@ -1,13 +1,17 @@
-﻿using TTT_BusinessDataLogic;
+﻿using TTT_BusinessLogic;
+using TTT_DataLogic;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace TicTacToe
 {
     internal class TicTacToe
     {
-        static string[] options = { "[1] Player vs Player", "[2] Player vs Bot", "[3] Exit" };
+        static TTT_Process process = new TTT_Process();
+
+        static string[] options = { "[1] Player vs Player", "[2] Player vs Bot", "[3] Score History", "[4] Exit" };
         static string p1 = "", p2 = "";
 
-        static char[] oX = TTT_Process.oX;
+        static char[] oX = TTT_DataService.oX;
 
         static bool oneWinner = false, rematch = false;
 
@@ -74,6 +78,9 @@ namespace TicTacToe
                     Thread.Sleep(2000);
                     break;
                 case 3:
+                    ScoreHistory();
+                    return;
+                case 4:
                     Console.WriteLine("\nEXITING THE PROGRAM...");
                     Thread.Sleep(2000);
                     return;
@@ -111,6 +118,68 @@ namespace TicTacToe
             Console.WriteLine("| [O] " + p2 + ": " + TTT_Process.score2 + "\t    |");
         }
 
+        static void ScoreHistory()
+        {
+            Console.Clear();
+
+            Console.WriteLine("|====TIC TAC TOE====|\n");
+
+            Console.WriteLine("| --SCORE HISTORY-- |\n");
+
+            //foreach (string[] i in TTT_Process.nameScores.Keys)
+            //{
+            //    string[] oldNames = i;
+            //    int[] oldScores = TTT_Process.nameScores[i];
+            //    Console.WriteLine($" - {oldNames[0]}: {oldScores[0]}  VS  {oldNames[1]}: {oldScores[1]}");
+            //}
+
+            //if (TTT_Process.nameScores.Count == 0)
+            //    Console.WriteLine("|        N/A        |");
+            //Console.WriteLine("\n|===================|");
+
+
+            foreach (var nameScore in TTT_DataService.nameScores)
+            {
+                string[] oldNames = nameScore.Usernames;
+                int[] oldScores = nameScore.Scores;
+                Console.WriteLine($" - {oldNames[0]}: {oldScores[0]}  VS  {oldNames[1]}: {oldScores[1]}");
+            }
+
+            if (TTT_DataService.nameScores.Count == 0)
+                Console.WriteLine("|        N/A        |");
+            Console.WriteLine("\n|===================|");
+
+            Console.WriteLine("\n[1] Clear History \n[2] Go Back");
+            Console.Write("\nChoose from [1-2]: ");
+            int actions = Convert.ToInt16(Console.ReadLine());
+
+            switch (actions)
+            {
+                case 1:
+                    process.ClearHistory();
+                    Console.WriteLine("\nCLEARING HISTORY...");
+                    Thread.Sleep(2000);
+
+                    ScoreHistory();
+                    break;
+                case 2:
+                    Console.WriteLine("\nGOING BACK TO MENU...");
+                    Thread.Sleep(2000);
+
+                    Console.Clear();
+
+                    DisplayOptions();
+                    int options = GetUserInput();
+                    UseUserInput(options);
+                    return;
+                default:
+                    Console.WriteLine("\nInvalid Input!");
+                    Thread.Sleep(2000);
+                    ScoreHistory();
+                    break;
+            }
+        }
+
 
         static void RefreshUI(string p1, string p2)
         {
@@ -138,6 +207,7 @@ namespace TicTacToe
                     RefreshUI(p1, p2);
                 else
                 {
+                    process.GetHistory(p1, p2, TTT_Process.score1, TTT_Process.score2);
                     TTT_Process.score1 = 0;
                     TTT_Process.score2 = 0;
                 }

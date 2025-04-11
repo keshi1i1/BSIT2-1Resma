@@ -1,0 +1,16 @@
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\bin\Debug\net8.0\TTT_DataLogic.deps.json
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\bin\Debug\net8.0\TTT_DataLogic.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\bin\Debug\net8.0\TTT_DataLogic.pdb
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\bin\Debug\net8.0\TTT_History.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\bin\Debug\net8.0\TTT_History.pdb
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.csproj.AssemblyReference.cache
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.AssemblyInfoInputs.cache
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.AssemblyInfo.cs
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.sourcelink.json
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_Data.5A0F0E8F.Up2Date
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\refint\TTT_DataLogic.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\TTT_DataLogic.pdb
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_DataLogic\obj\Debug\net8.0\ref\TTT_DataLogic.dll

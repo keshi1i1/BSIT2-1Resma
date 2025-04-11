@@ -1,11 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156
+VisualStudioVersion = 17.13.35913.81 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe.csproj", "{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToe", "TicTacToe.csproj", "{40B7DDED-02CB-49F9-90B3-0931445BDDEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTT_BusinessDataLogic", "..\TTT_BusinessDataLogic\TTT_BusinessDataLogic.csproj", "{643834A5-593A-4773-BD40-456BFB95AD59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTT_BusinessLogic", "..\TTT_BusinessLogic\TTT_BusinessLogic.csproj", "{6E75B576-CAA9-4808-BA85-6F0F18A10495}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTT_DataLogic", "..\TTT_DataLogic\TTT_DataLogic.csproj", "{986A63ED-DDFF-47AD-9071-E33FD0790A09}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TTT_History", "..\TTT_History\TTT_History.csproj", "{BB93B127-7C1A-4AB6-8131-DA423760719D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +17,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{587D0C5D-F6FF-423C-BC42-AE125A8BB3AA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{643834A5-593A-4773-BD40-456BFB95AD59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{643834A5-593A-4773-BD40-456BFB95AD59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{643834A5-593A-4773-BD40-456BFB95AD59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{643834A5-593A-4773-BD40-456BFB95AD59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40B7DDED-02CB-49F9-90B3-0931445BDDEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40B7DDED-02CB-49F9-90B3-0931445BDDEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40B7DDED-02CB-49F9-90B3-0931445BDDEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40B7DDED-02CB-49F9-90B3-0931445BDDEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E75B576-CAA9-4808-BA85-6F0F18A10495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E75B576-CAA9-4808-BA85-6F0F18A10495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E75B576-CAA9-4808-BA85-6F0F18A10495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E75B576-CAA9-4808-BA85-6F0F18A10495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986A63ED-DDFF-47AD-9071-E33FD0790A09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986A63ED-DDFF-47AD-9071-E33FD0790A09}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986A63ED-DDFF-47AD-9071-E33FD0790A09}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986A63ED-DDFF-47AD-9071-E33FD0790A09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB93B127-7C1A-4AB6-8131-DA423760719D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB93B127-7C1A-4AB6-8131-DA423760719D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB93B127-7C1A-4AB6-8131-DA423760719D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB93B127-7C1A-4AB6-8131-DA423760719D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7BF31E69-FA52-4C0F-AF96-EDC5B4ECC633}
+		SolutionGuid = {0BCDD978-7EFC-45A1-91B2-825E6F57F2DD}
 	EndGlobalSection
 EndGlobal

@@ -1,0 +1,12 @@
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\bin\Debug\net8.0\TTT_History.deps.json
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\bin\Debug\net8.0\TTT_History.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\bin\Debug\net8.0\TTT_History.pdb
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.AssemblyInfoInputs.cache
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.AssemblyInfo.cs
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.sourcelink.json
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\refint\TTT_History.dll
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\TTT_History.pdb
+C:\Users\Lenovo\OneDrive\Documents\VS2022\repos\BSIT2-1Resma\TTT_History\obj\Debug\net8.0\ref\TTT_History.dll
