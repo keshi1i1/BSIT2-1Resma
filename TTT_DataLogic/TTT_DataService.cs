@@ -4,50 +4,28 @@ namespace TTT_DataLogic
 {
     public class TTT_DataService
     {
-        public static char[] oX = { '1', '2', '3', '4', '5', '6', '7', '8', '9' };
-
-        public static List<TTT_ScoreHistory> nameScores = new List<TTT_ScoreHistory>();
+        TTT_IDataService dataService;
 
         public TTT_DataService()
         {
-            CreateDummyNamesAndScores();
+            //dataService = new TTT_TextFileDataService();
+            //dataService = new TTT_InMemoryDataService();
+            dataService = new TTT_JsonFileDataService();
+        }
+        public List<TTT_ScoreHistory> GetScoreHistory()
+        {
+            return dataService.GetScoreHistory();
         }
 
-        public void CreateDummyNamesAndScores()
+        public void AddScoreHistory(TTT_ScoreHistory scoreHistory)
         {
-            TTT_ScoreHistory nameScore1 = new TTT_ScoreHistory();
-            nameScore1.Usernames = new string[] { "JES", "VON" };
-            nameScore1.Scores = new int[] { 10, 2 };
-
-            nameScores.Add(nameScore1);
-
-            TTT_ScoreHistory nameScore2 = new TTT_ScoreHistory
-            {
-                Usernames = new string[] { "TER", "RES" },
-                Scores = new int[] { 5, 5 }
-            };
-
-            nameScores.Add(nameScore2);
-
-            nameScores.Add(new TTT_ScoreHistory
-            {
-                Usernames = new string[] { "KESH", "DUKE" },
-                Scores = new int[] { 3, 6 }
-            });
-        }
-
-        public void GetScoreHistory(string p1, string p2, int score1, int score2)
-        {
-            nameScores.Add(new TTT_ScoreHistory
-            {
-                Usernames = new string[] { p1, p2 },
-                Scores = new int[] { score1, score2 }
-            });
+            dataService.AddScoreHistory(scoreHistory);
         }
 
         public void ClearScoreHistory()
         {
-            nameScores.Clear();
+            dataService.ClearScoreHistory();
         }
+
     }
 }

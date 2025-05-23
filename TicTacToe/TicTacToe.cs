@@ -1,19 +1,26 @@
-﻿using TTT_BusinessLogic;
-using TTT_DataLogic;
+﻿using System.Diagnostics;
+using TTT_BusinessLogic;
 using static System.Formats.Asn1.AsnWriter;
 
 namespace TicTacToe
 {
     internal class TicTacToe
     {
+        /*
+            objectives:
+            - draw feature
+            - player vs bot
+            - difficulty (easy, medium, hard)
+            - more error handling (repetitive number from 1-9, invalid choices, etc.)
+        */
         static TTT_Process process = new TTT_Process();
 
         static string[] options = { "[1] Player vs Player", "[2] Player vs Bot", "[3] Score History", "[4] Exit" };
         static string p1 = "", p2 = "";
 
-        static char[] oX = TTT_DataService.oX;
+        static char[] oX = TTT_Process.oX;
 
-        static bool oneWinner = false, rematch = false;
+        static bool oneWinner = false, rematch = false, draw = false, uiChecker = true;
 
         static void Main(string[] args)
         {
@@ -30,7 +37,6 @@ namespace TicTacToe
                 Please refrain from making any errors.
                 This game is not completed yet.
                 Only option 1 is available for now.
-                And there is no DRAW feature yet.
                 Thank you for reading this.
             */
 
@@ -137,15 +143,14 @@ namespace TicTacToe
             //    Console.WriteLine("|        N/A        |");
             //Console.WriteLine("\n|===================|");
 
-
-            foreach (var nameScore in TTT_DataService.nameScores)
+            for (int i = 0; i < TTT_Process.GetScoreHistory().Count; i++)
             {
-                string[] oldNames = nameScore.Usernames;
-                int[] oldScores = nameScore.Scores;
+                string[] oldNames = TTT_Process.GetScoreHistory()[i].Usernames;
+                int[] oldScores = TTT_Process.GetScoreHistory()[i].Scores;
                 Console.WriteLine($" - {oldNames[0]}: {oldScores[0]}  VS  {oldNames[1]}: {oldScores[1]}");
             }
 
-            if (TTT_DataService.nameScores.Count == 0)
+            if (TTT_Process.GetScoreHistory().Count == 0)
                 Console.WriteLine("|        N/A        |");
             Console.WriteLine("\n|===================|");
 
@@ -156,7 +161,7 @@ namespace TicTacToe
             switch (actions)
             {
                 case 1:
-                    process.ClearHistory();
+                    process.ClearScoreHistory();
                     Console.WriteLine("\nCLEARING HISTORY...");
                     Thread.Sleep(2000);
 
@@ -186,28 +191,34 @@ namespace TicTacToe
             Console.Clear();
 
             oneWinner = TTT_Process.MatchDecider();
+            draw = TTT_Process.MatchIsDraw();
             ScoreBoard(p1, p2);
             TicTacToeUI();
 
-            if (!oneWinner)
+            if (!oneWinner && !draw)
             {
                 WhosTurn();
                 RefreshUI(p1, p2);
             }
             else
             {
+                if(!draw)
+                    ShowWinner();
+                else
+                    ShowDraw(draw);
+
                 TTT_Process.ResetArray();
-                Winner();
 
                 //ask user for rematch
                 oneWinner = false;
+                draw = false;
                 rematch = Rematch();
 
                 if (rematch)
                     RefreshUI(p1, p2);
                 else
                 {
-                    process.GetHistory(p1, p2, TTT_Process.score1, TTT_Process.score2);
+                    process.AddScoreHistory(p1, p2, TTT_Process.score1, TTT_Process.score2);
                     TTT_Process.score1 = 0;
                     TTT_Process.score2 = 0;
                 }
@@ -223,7 +234,7 @@ namespace TicTacToe
                 int choice = Convert.ToInt16(Console.ReadLine());
 
                 if (TTT_Process.ChoiceFrom1To9(choice))
-                    TTT_Process.p1turn = false;
+                        TTT_Process.p1turn = false;
                 else
                     InvalidChoice();
             }
@@ -240,7 +251,14 @@ namespace TicTacToe
             }
         }
 
-        static void Winner()
+        static void ShowDraw(bool draw)
+        {
+            if(draw)
+                Console.WriteLine("\n|    MATCH DRAW!    |");
+            Thread.Sleep(1000);
+        }
+
+        static void ShowWinner()
         {
             if (TTT_Process.whoWon == "p1")
                 Console.WriteLine("\n|       X WON!      |");
@@ -253,7 +271,7 @@ namespace TicTacToe
 
         static void InvalidChoice()
         {
-            Console.WriteLine("\nInvalid! Please choose from 1 to 9.");
+            Console.WriteLine("\nInvalid! Please choose from numbers shown.");
             Thread.Sleep(2000);
         }
 

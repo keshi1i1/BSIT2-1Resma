@@ -3,9 +3,9 @@ using TTT_History;
 
 namespace TTT_BusinessLogic
 {
-    public class TTT_Process
+    public class TTT_OldProcess
     {
-        static TTT_DataService dataService = new TTT_DataService();
+        TTT_OldInMemoryDataService oldInMemoryDataService = new TTT_OldInMemoryDataService();
 
         //public static Dictionary<string[], int[]> nameScores = new Dictionary<string[], int[]>();
 
@@ -117,9 +117,9 @@ namespace TTT_BusinessLogic
 
         public static bool MatchIsDraw()
         {
-            for(int i = 0; i < 9; i++)
+            for (int i = 0; i < 9; i++)
             {
-                for(char j = '1'; j <= '9'; j++)
+                for (char j = '1'; j <= '9'; j++)
                 {
                     if (oX[i] == j)
                         return false;
@@ -159,24 +159,12 @@ namespace TTT_BusinessLogic
 
         public void AddScoreHistory(string p1, string p2, int score1, int score2)
         {
-            TTT_ScoreHistory scoreHistory = new TTT_ScoreHistory
-            {
-                Usernames = new string[] { p1, p2 },
-                Scores = new int[] { score1, score2 }
-            };
-
-            dataService.AddScoreHistory(scoreHistory);
+            oldInMemoryDataService.AddScoreHistory(p1, p2, score1, score2);
         }
 
-        public void ClearScoreHistory()
+        public void ClearHistory()
         {
-            GetScoreHistory().Clear();
-            dataService.ClearScoreHistory();
-        }
-
-        public static List<TTT_ScoreHistory> GetScoreHistory()
-        {
-            return dataService.GetScoreHistory();
+            oldInMemoryDataService.ClearScoreHistory();
         }
     }
 }
