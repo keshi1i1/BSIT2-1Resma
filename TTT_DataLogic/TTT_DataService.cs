@@ -10,7 +10,8 @@ namespace TTT_DataLogic
         {
             //dataService = new TTT_TextFileDataService();
             //dataService = new TTT_InMemoryDataService();
-            dataService = new TTT_JsonFileDataService();
+            //dataService = new TTT_JsonFileDataService();
+            dataService = new TTT_DBDataService();
         }
         public List<TTT_ScoreHistory> GetScoreHistory()
         {

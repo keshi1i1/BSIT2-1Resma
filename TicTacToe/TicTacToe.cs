@@ -13,6 +13,7 @@ namespace TicTacToe
             - difficulty (easy, medium, hard)
             - more error handling (repetitive number from 1-9, invalid choices, etc.)
         */
+
         static TTT_Process process = new TTT_Process();
 
         static string[] options = { "[1] Player vs Player", "[2] Player vs Bot", "[3] Score History", "[4] Exit" };

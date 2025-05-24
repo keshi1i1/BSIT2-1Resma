@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TTT_DataLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4df82d660df1ac25cd925ef282ab0a8564084bfa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f7a4cde71da257ecf02a68787c280e730383ebc3")]
 [assembly: System.Reflection.AssemblyProductAttribute("TTT_DataLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TTT_DataLogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
