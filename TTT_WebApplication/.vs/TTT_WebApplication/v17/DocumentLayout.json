@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_WebApplication\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3E91DDF1-6D8A-4D98-8B49-2596C3A76948}|TTT_WebApplication.csproj|c:\\users\\lenovo\\onedrive\\documents\\vs2022\\repos\\bsit2-1resma\\ttt_webapplication\\controllers\\ttt_scorehistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3E91DDF1-6D8A-4D98-8B49-2596C3A76948}|TTT_WebApplication.csproj|solutionrelative:controllers\\ttt_scorehistorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TTT_ScoreHistoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_WebApplication\\Controllers\\TTT_ScoreHistoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\TTT_ScoreHistoryController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\OneDrive\\Documents\\VS2022\\repos\\BSIT2-1Resma\\TTT_WebApplication\\Controllers\\TTT_ScoreHistoryController.cs",
+              "RelativeToolTip": "Controllers\\TTT_ScoreHistoryController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T15:26:28.507Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

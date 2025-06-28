@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TTT_History")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+444196b6d464f40eb67e62e06e1634840d769dcd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ff3217ceb94ce9ef57a0580399b27f1cd7d7dd3")]
 [assembly: System.Reflection.AssemblyProductAttribute("TTT_History")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TTT_History")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

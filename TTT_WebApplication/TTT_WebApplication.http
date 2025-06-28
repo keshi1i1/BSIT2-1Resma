@@ -1,0 +1,6 @@
+@TTT_WebApplication_HostAddress = http://localhost:5068
+
+GET {{TTT_WebApplication_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

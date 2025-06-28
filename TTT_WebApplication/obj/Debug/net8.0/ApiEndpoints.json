@@ -1,0 +1,285 @@
+[
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "AddPvEScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/addPvENameScores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nameScores",
+        "Type": "TTT_History.TTT_ScoreHistory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "AddPvPScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/addPvPNameScores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nameScores",
+        "Type": "TTT_History.TTT_ScoreHistory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "ClearPvEScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/clearPvEScoreHistory",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "ClearPvPScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/clearPvPScoreHistory",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "GetPvEScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/getPvEScoreHistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TTT_History.TTT_ScoreHistory, TTT_History, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "GetPvPScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/getPvPScoreHistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TTT_History.TTT_ScoreHistory, TTT_History, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "RemoveParticularPvE",
+    "RelativePath": "api/TTT_ScoreHistory/removeParticularPvE",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "choiceToRemove",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "RemoveParticularPvP",
+    "RelativePath": "api/TTT_ScoreHistory/removeParticularPvP",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "choiceToRemove",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "UpdateDifficulty",
+    "RelativePath": "api/TTT_ScoreHistory/updateDifficulty",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nameScores",
+        "Type": "TTT_History.TTT_ScoreHistory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "UpdatePvEScoreHistory",
+    "RelativePath": "api/TTT_ScoreHistory/updatePvENameScores",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nameScores",
+        "Type": "TTT_History.TTT_ScoreHistory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.TTT_ScoreHistoryController",
+    "Method": "UpdateUsername",
+    "RelativePath": "api/TTT_ScoreHistory/updateUsername",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "nameScores",
+        "Type": "TTT_History.TTT_ScoreHistory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Boolean",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "TTT_WebApplication.Controllers.WeatherForecastController",
+    "Method": "Get",
+    "RelativePath": "WeatherForecast",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[TTT_WebApplication.WeatherForecast, TTT_WebApplication, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "EndpointName": "GetWeatherForecast"
+  }
+]
