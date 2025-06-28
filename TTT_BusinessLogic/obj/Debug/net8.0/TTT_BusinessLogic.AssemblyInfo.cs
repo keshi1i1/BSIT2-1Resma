@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TTT_BusinessLogic")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9ff3217ceb94ce9ef57a0580399b27f1cd7d7dd3")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa6b43032beeea8340d21d2a56cca7c81948b5bf")]
 [assembly: System.Reflection.AssemblyProductAttribute("TTT_BusinessLogic")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TTT_BusinessLogic")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

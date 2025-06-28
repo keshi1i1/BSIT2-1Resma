@@ -32,9 +32,7 @@ namespace TTT_Forms
             pb_btn_guide.Image = enterGuide;
             pb_btn_guide.MouseEnter += (s, e) => pb_btn_guide.Image = leaveGuide;
             pb_btn_guide.MouseLeave += (s, e) => pb_btn_guide.Image = enterGuide;
-            //Menu menu = new Menu();
-            //pb_btn_guide.Click += (s, e) => menu.Show();
-            //pb_btn_guide.Click += (s, e) => this.Hide();
+            pb_btn_guide.Click += Guide_Button;
 
             Image enterBack = Image.FromFile("icons\\back.png");
             Image leaveBack = Image.FromFile("icons\\back_hover.png");
@@ -58,9 +56,7 @@ namespace TTT_Forms
             pb_btn_pve.Image = enterPvE;
             pb_btn_pve.MouseEnter += (s, e) => pb_btn_pve.Image = leavePvE;
             pb_btn_pve.MouseLeave += (s, e) => pb_btn_pve.Image = enterPvE;
-            //Form1 form = new Form1();
-            //pb_btn_back.Click += (s, e) => form.Show();
-            //pb_btn_back.Click += (s, e) => this.Close();
+            pb_btn_pve.Click += PvE_Button;
 
             Image enterHistory = Image.FromFile("icons\\history.png");
             Image leaveHistory = Image.FromFile("icons\\history_hover.png");
@@ -68,14 +64,22 @@ namespace TTT_Forms
             pb_btn_history.Image = enterHistory;
             pb_btn_history.MouseEnter += (s, e) => pb_btn_history.Image = leaveHistory;
             pb_btn_history.MouseLeave += (s, e) => pb_btn_history.Image = enterHistory;
-            //Form1 form = new Form1();
-            //pb_btn_back.Click += (s, e) => form.Show();
-            //pb_btn_back.Click += (s, e) => this.Close();
+            pb_btn_history.Click += History_Button;
+        }
+
+        private void Guide_Button(object sender, EventArgs e)
+        {
+            Guide guide = new Guide();
+            guide.Location = this.Location;
+            guide.Show();
+            this.Hide();
         }
 
         private void Back_Button(object sender, EventArgs e)
         {
             Form1 form = new Form1();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             form.Show();
             this.Hide();
         }
@@ -83,7 +87,24 @@ namespace TTT_Forms
         private void PvP_Button(object sender, EventArgs e)
         {
             PVP pvp = new PVP();
+            pvp.Location = this.Location;
             pvp.Show();
+            this.Hide();
+        }
+
+        private void PvE_Button(object sender, EventArgs e)
+        {
+            PVE pve = new PVE();
+            pve.Location = this.Location;
+            pve.Show();
+            this.Hide();
+        }
+
+        private void History_Button(object sender, EventArgs e)
+        {
+            History history = new History();
+            history.Location = this.Location;
+            history.Show();
             this.Hide();
         }
     }

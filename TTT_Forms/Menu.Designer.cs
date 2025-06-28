@@ -113,7 +113,7 @@
             Controls.Add(pb_btn_back);
             Controls.Add(pb_menu_page);
             Name = "Menu";
-            StartPosition = FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.Manual;
             Text = "Menu";
             ((System.ComponentModel.ISupportInitialize)pb_menu_page).EndInit();
             ((System.ComponentModel.ISupportInitialize)pb_btn_back).EndInit();

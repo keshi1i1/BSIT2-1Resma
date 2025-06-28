@@ -28,6 +28,7 @@ namespace TTT_Forms
         private void Play_Button(object sender, EventArgs e)
         {
             Menu menu = new Menu();
+            menu.Location = this.Location;
             menu.Show();
             this.Hide();
         }

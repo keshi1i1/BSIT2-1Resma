@@ -36,32 +36,43 @@ namespace TTT_Forms
 
             Image enterStart = Image.FromFile("icons\\start_pvp.png");
             Image leaveStart = Image.FromFile("icons\\start_pvp_hover.png");
-            pb_btn_start_pvp.BackColor = Color.Transparent;
-            pb_btn_start_pvp.Image = enterStart;
-            pb_btn_start_pvp.MouseEnter += (s, e) => pb_btn_start_pvp.Image = leaveStart;
-            pb_btn_start_pvp.MouseLeave += (s, e) => pb_btn_start_pvp.Image = enterStart;
-            //pb_btn_start_pvp.Click += PvP_Button;
+            pb_btn_start.BackColor = Color.Transparent;
+            pb_btn_start.Image = enterStart;
+            pb_btn_start.MouseEnter += (s, e) => pb_btn_start.Image = leaveStart;
+            pb_btn_start.MouseLeave += (s, e) => pb_btn_start.Image = enterStart;
+            pb_btn_start.Click += Start_Button;
 
             tb_player1.BackColor = Color.FromArgb(152, 161, 188);
             tb_player1.ForeColor = Color.FromArgb(120, 123, 155);
-            tb_player1.MouseEnter += P1_Text_Box1;
-            tb_player1.MouseLeave += P1_Text_Box2;
+            tb_player1.MouseEnter += P1_TextBox_MouseEnter;
+            tb_player1.MouseLeave += P1_TextBox_MouseLeave;
             tb_player1.ReadOnly = true;
 
             tb_player2.BackColor = Color.FromArgb(152, 161, 188);
             tb_player2.ForeColor = Color.FromArgb(120, 123, 155);
-            tb_player2.MouseEnter += P2_Text_Box1;
-            tb_player2.MouseLeave += P2_Text_Box2;
+            tb_player2.MouseEnter += P2_TextBox_MouseEnter;
+            tb_player2.MouseLeave += P2_TextBox_MouseLeave;
             tb_player2.ReadOnly = true;
         }
         private void Back_Button(object sender, EventArgs e)
         {
             Menu menu = new Menu();
+            menu.Location = this.Location;
             menu.Show();
             this.Hide();
         }
 
-        private void P1_Text_Box1(object sender, EventArgs e)
+        private void Start_Button(object sender, EventArgs e)
+        {
+            string player1 = tb_player1.Text, player2 = tb_player2.Text;
+
+            TicTacToe_UI ui = new TicTacToe_UI(player1, player2);
+            ui.Location = this.Location;
+            ui.Show();
+            this.Hide();
+        }
+
+        private void P1_TextBox_MouseEnter(object sender, EventArgs e)
         {
             if (tb_player1.Text == "Player 1")
             {
@@ -71,7 +82,7 @@ namespace TTT_Forms
             }
         }
 
-        private void P1_Text_Box2(object sender, EventArgs e)
+        private void P1_TextBox_MouseLeave(object sender, EventArgs e)
         {
             if (tb_player1.Text == "")
             {
@@ -81,7 +92,7 @@ namespace TTT_Forms
             }
         }
 
-        private void P2_Text_Box1(object sender, EventArgs e)
+        private void P2_TextBox_MouseEnter(object sender, EventArgs e)
         {
             if (tb_player2.Text == "Player 2")
             {
@@ -91,7 +102,7 @@ namespace TTT_Forms
             }
         }
 
-        private void P2_Text_Box2(object sender, EventArgs e)
+        private void P2_TextBox_MouseLeave(object sender, EventArgs e)
         {
             if (tb_player2.Text == "")
             {

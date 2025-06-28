@@ -1,13 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <Compile Update="Continue.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Guide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="History.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="New_Game.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PVE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PvE_Scores.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="PVP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="PvP_Scores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="TicTacToe_UI.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

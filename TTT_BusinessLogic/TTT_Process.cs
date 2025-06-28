@@ -39,6 +39,7 @@ namespace TTT_BusinessLogic
                 return false;
             }
         }
+
         public bool ChoiceFrom1To9(int choice)
         {
             if (XOChecker(choice))

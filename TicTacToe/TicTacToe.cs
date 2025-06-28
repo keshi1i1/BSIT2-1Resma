@@ -362,7 +362,7 @@ namespace TicTacToe
                         choice = process.HardBotAI(oX);
                     }
 
-                    if (process.ChoiceFrom1To9(choice)) { }
+                    if (process.ChoiceFrom1To9(choice))
                         process.p1turn = true;
                 }
                 else

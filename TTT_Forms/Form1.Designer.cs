@@ -36,6 +36,7 @@
             // 
             // pb_home_page
             // 
+            pb_home_page.BackColor = Color.White;
             pb_home_page.Location = new Point(0, 0);
             pb_home_page.Name = "pb_home_page";
             pb_home_page.Size = new Size(510, 700);
@@ -45,9 +46,9 @@
             // pb_btn_play
             // 
             pb_btn_play.Cursor = Cursors.Hand;
-            pb_btn_play.Location = new Point(180, 480);
+            pb_btn_play.Location = new Point(190, 480);
             pb_btn_play.Name = "pb_btn_play";
-            pb_btn_play.Size = new Size(150, 150);
+            pb_btn_play.Size = new Size(130, 130);
             pb_btn_play.SizeMode = PictureBoxSizeMode.StretchImage;
             pb_btn_play.TabIndex = 2;
             pb_btn_play.TabStop = false;
@@ -56,6 +57,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
             ClientSize = new Size(510, 700);
             Controls.Add(pb_btn_play);
             Controls.Add(pb_home_page);
