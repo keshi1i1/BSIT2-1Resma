@@ -66,7 +66,7 @@ namespace TTT_Forms
         {
             string player1 = tb_player1.Text, player2 = tb_player2.Text;
 
-            TicTacToe_UI ui = new TicTacToe_UI(player1, player2);
+            TicTacToe_UI ui = new TicTacToe_UI(player1, player2, false);
             ui.Location = this.Location;
             ui.Show();
             this.Hide();

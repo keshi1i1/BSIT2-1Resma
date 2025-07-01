@@ -69,30 +69,30 @@
             // lbl_player1
             // 
             lbl_player1.AutoSize = true;
-            lbl_player1.Font = new Font("Comic Sans MS", 19.8000011F, FontStyle.Bold);
-            lbl_player1.Location = new Point(120, 160);
+            lbl_player1.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold);
+            lbl_player1.Location = new Point(120, 166);
             lbl_player1.Name = "lbl_player1";
-            lbl_player1.Size = new Size(156, 48);
+            lbl_player1.Size = new Size(138, 41);
             lbl_player1.TabIndex = 18;
             lbl_player1.Text = "Player 1";
             // 
             // lbl_player2
             // 
             lbl_player2.AutoSize = true;
-            lbl_player2.Font = new Font("Comic Sans MS", 19.8000011F, FontStyle.Bold);
-            lbl_player2.Location = new Point(120, 214);
+            lbl_player2.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold);
+            lbl_player2.Location = new Point(120, 220);
             lbl_player2.Name = "lbl_player2";
-            lbl_player2.Size = new Size(156, 48);
+            lbl_player2.Size = new Size(138, 41);
             lbl_player2.TabIndex = 19;
             lbl_player2.Text = "Player 2";
             // 
             // lbl_score2
             // 
             lbl_score2.AutoSize = true;
-            lbl_score2.Font = new Font("Comic Sans MS", 19.8000011F, FontStyle.Bold);
-            lbl_score2.Location = new Point(360, 214);
+            lbl_score2.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold);
+            lbl_score2.Location = new Point(360, 220);
             lbl_score2.Name = "lbl_score2";
-            lbl_score2.Size = new Size(150, 48);
+            lbl_score2.Size = new Size(132, 41);
             lbl_score2.TabIndex = 21;
             lbl_score2.Text = "Score 2";
             lbl_score2.TextAlign = ContentAlignment.MiddleCenter;
@@ -100,10 +100,10 @@
             // lbl_score1
             // 
             lbl_score1.AutoSize = true;
-            lbl_score1.Font = new Font("Comic Sans MS", 19.8000011F, FontStyle.Bold);
-            lbl_score1.Location = new Point(360, 160);
+            lbl_score1.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold);
+            lbl_score1.Location = new Point(360, 166);
             lbl_score1.Name = "lbl_score1";
-            lbl_score1.Size = new Size(150, 48);
+            lbl_score1.Size = new Size(132, 41);
             lbl_score1.TabIndex = 20;
             lbl_score1.Text = "Score 1";
             lbl_score1.TextAlign = ContentAlignment.MiddleCenter;
@@ -200,10 +200,10 @@
             // 
             // lbl_turn
             // 
-            lbl_turn.Font = new Font("Comic Sans MS", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lbl_turn.Location = new Point(50, 590);
+            lbl_turn.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl_turn.Location = new Point(30, 590);
             lbl_turn.Name = "lbl_turn";
-            lbl_turn.Size = new Size(410, 48);
+            lbl_turn.Size = new Size(450, 48);
             lbl_turn.TabIndex = 31;
             lbl_turn.Text = "Someone's Turn!";
             lbl_turn.TextAlign = ContentAlignment.MiddleCenter;

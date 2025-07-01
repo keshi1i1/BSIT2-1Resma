@@ -49,11 +49,11 @@ namespace TTT_DataLogic
 
         public List<TTT_ScoreHistory> GetPvEScoreHistory()
         {
+            sqlConnection.Open();
+
             string selectStatement = "SELECT Username, Score1, Bot_Difficulty, Score2 FROM PlayerVsBotSH";
 
             SqlCommand selectCommand = new SqlCommand(selectStatement, sqlConnection);
-
-            sqlConnection.Open();
 
             SqlDataReader reader = selectCommand.ExecuteReader();
 

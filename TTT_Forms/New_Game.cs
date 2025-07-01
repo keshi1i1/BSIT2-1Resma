@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TTT_BusinessLogic;
 
 namespace TTT_Forms
 {
     public partial class New_Game : Form
     {
+        TTT_Process process = new TTT_Process();
         public New_Game()
         {
             InitializeComponent();
@@ -69,26 +71,40 @@ namespace TTT_Forms
 
         private void Easy_Button(object sender, EventArgs e)
         {
-            //TicTacToe_UI ui = new TicTacToe_UI();
-            //ui.Location = this.Location;
-            //ui.Show();
-            //this.Hide();
+            NewGame("EASY");
         }
 
         private void Medium_Button(object sender, EventArgs e)
         {
-            //TicTacToe_UI ui = new TicTacToe_UI();
-            //ui.Location = this.Location;
-            //ui.Show();
-            //this.Hide();
+            NewGame("MEDIUM");
         }
 
         private void Hard_Button(object sender, EventArgs e)
         {
-            //TicTacToe_UI ui = new TicTacToe_UI();
-            //ui.Location = this.Location;
-            //ui.Show();
-            //this.Hide();
+            NewGame("HARD");
+        }
+
+        public void NewGame(string difficulty)
+        {
+            string username = CustomMessageBox.ShowInput(this, "ENTER YOUR USERNAME", "PLAYER 1", "INPUT");
+
+            if (process.ValidateUsername(username.ToUpper()))
+            {
+                CustomMessageBox.Show(this, "USERNAME IS ALREADY TAKEN!", "ERROR", "LONG");
+                NewGame(difficulty);
+            }
+            else if (username == "CANCEL");
+
+            else if (username == "")
+                CustomMessageBox.Show(this, "INVALID INPUT!", "ERROR", "OK");
+
+            else
+            {
+                TicTacToe_UI ui = new TicTacToe_UI(username, difficulty, false);
+                ui.Location = this.Location;
+                ui.Show();
+                this.Hide();
+            }
         }
     }
 }

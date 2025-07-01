@@ -640,7 +640,7 @@ namespace TicTacToe
         public static void ChangeDifficulty(string username)
         {
             Console.WriteLine("\nChanging difficulty resets the scores to 0.");
-            Console.WriteLine("\nAre you sure want to change difficulty? Yes/No\n");
+            Console.WriteLine("\nAre you sure you want to change difficulty? Yes/No\n");
             string yesNo = Console.ReadLine();
 
             if (yesNo.Equals("Yes", StringComparison.OrdinalIgnoreCase) || yesNo.Equals("Y", StringComparison.OrdinalIgnoreCase))

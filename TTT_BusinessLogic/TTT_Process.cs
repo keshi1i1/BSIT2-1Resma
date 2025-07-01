@@ -375,7 +375,7 @@ namespace TTT_BusinessLogic
                     return data;
                 }
             }
-            return [ "" ];
+            return new string[] { "", "0", "0" };
         }
 
         public List<TTT_ScoreHistory> GetPvPScoreHistory()

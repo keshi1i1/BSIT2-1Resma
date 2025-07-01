@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TTT_BusinessLogic;
 using TTT_History;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace TTT_Forms
 {
@@ -19,34 +20,89 @@ namespace TTT_Forms
         TTT_Process process = new TTT_Process();
 
         PictureBox[] buttons;
+        Label[] labels;
 
-        Image camouflage = Image.FromFile("icons\\transparent_bg.png");
+        Image camouflage = Image.FromFile("icons\\invisible.png");
         Image X = Image.FromFile("icons\\x_icon.png");
         Image O = Image.FromFile("icons\\o_icon.png");
 
-        bool p1turn = RNGTurn();
+        Image first = null, second = null, third = null;
 
-        public TicTacToe_UI(string player1, string player2)
+        static bool p1turn = RNGTurn(), continueMatch = false;
+
+        string name = "", player1 = "", player2 = "";
+
+        public string chosenDifficulty = "";
+
+        public int score1 = 0, score2 = 0;
+
+        public TicTacToe_UI(string p1, string p2, bool continueGame)
         {
             InitializeComponent();
             this.BackColor = Color.FromArgb(85, 88, 121);
             this.FormClosed += (s, e) => Application.Exit();
 
-            lbl_player1.Text = player1.ToUpper();
-            lbl_player2.Text = player2.ToUpper();
+            player1 = p1.ToUpper();
 
-            lbl_score1.Text = Convert.ToString(process.score1);
-            lbl_score2.Text = Convert.ToString(process.score2);
+            if (!continueGame)
+            {
+                if (p2 == "EASY" || p2 == "MEDIUM" || p2 == "HARD")
+                {
+                    chosenDifficulty = p2;
+                    player2 = "BOT";
+                }
+                else
+                    player2 = p2.ToUpper();
+            }
+            else
+            {
+                player2 = "BOT";
+
+                string[] data = process.GetPlayerScoreHistory(player1);
+
+                chosenDifficulty = data[0];
+                score1 = Convert.ToInt32(data[1]);
+                score2 = Convert.ToInt32(data[2]);
+
+                continueMatch = continueGame;
+            }
+
+            lbl_player1.Text = player1;
+            lbl_player2.Text = player2;
+
+            lbl_score1.Text = score1.ToString();
+            lbl_score2.Text = score2.ToString();
 
             Components();
 
-            buttons = new PictureBox[] { pb_btn1, pb_btn2, pb_btn3, pb_btn4, pb_btn5, pb_btn6, pb_btn7, pb_btn8, pb_btn9 };
+            AllPictureButtons();
 
-            foreach (var btn in buttons)
+            WhosTurn();
+
+            if(Player2IsBot())
             {
-                lbl_turn.Text = $"{lbl_player1.Text}'s TURN";
-
-                btn.Click += ButtonClick;
+                foreach (var btn in buttons)
+                {
+                    btn.Click += ButtonClick;
+                }
+                if (!p1turn)
+                {
+                    System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                    timer.Interval = 2000;
+                    timer.Tick += (s, e) =>
+                    {
+                        timer.Stop();
+                        EasyBotAI();
+                    };
+                    timer.Start();
+                }
+            }
+            else
+            {
+                foreach (var btn in buttons)
+                {
+                    btn.Click += ButtonClick;
+                }
             }
         }
 
@@ -63,7 +119,7 @@ namespace TTT_Forms
                 return false;
         }
 
-        private void ButtonClick(object sender, EventArgs e)
+        public void ButtonClick(object sender, EventArgs e)
         {
             PictureBox clicked = sender as PictureBox;
 
@@ -71,20 +127,30 @@ namespace TTT_Forms
                 return;
 
             clicked.Image = (p1turn) ? X : O;
-            if (p1turn)
-            {
-                p1turn = false;
-                lbl_turn.Text = $"{lbl_player2.Text}'s TURN";
-            }
-            else
-            {
-                p1turn = true;
-                lbl_turn.Text = $"{lbl_player1.Text}'s TURN";
-            }
 
+            p1turn = !p1turn;
+            WhosTurn();
             CheckForWinner();
+
+            if (Player2IsBot())
+            {
+                System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+                timer.Interval = 2000;
+                timer.Tick += (s, args) =>
+                {
+                    timer.Stop();
+                    if(chosenDifficulty == "EASY")
+                        EasyBotAI();
+                    else if(chosenDifficulty == "MEDIUM")
+                        MediumBotAI();
+                    else if (chosenDifficulty == "HARD")
+                        HardBotAI();
+                };
+                timer.Start();
+            }
         }
-        private void CheckForWinner()
+
+        public void CheckForWinner()
         {
             Image[,] oX = new Image[3, 3];
 
@@ -119,30 +185,495 @@ namespace TTT_Forms
             CheckForDraw();
         }
 
-        private void CheckForDraw()
+        public void CheckForDraw()
         {
             if (buttons.All(b => b.Image != camouflage))
             {
-                MessageBox.Show("Draw!");
-                ResetBoard();
+                DialogResult result = DialogResult.No;
+
+                lbl_turn.Text = "MATCH DRAW!";
+                CustomMessageBox.Show(this, "MATCH DRAW!", "DRAW", "OK");
+                result = CustomMessageBox.Show(this, "DO YOU WANT A REMATCH?", "CONFIRMATION", "YES/NO");
+
+                YesNoResult(result);
             }
         }
 
-        private void EndGame(Image winner)
+        public void EndGame(Image winner)
         {
-            if(winner == X)
-                MessageBox.Show($"X wins!");
+            DialogResult result = DialogResult.No;
+
+            if (winner == X)
+            {
+                score1 = Convert.ToInt32(lbl_score1.Text);
+                score1++;
+                lbl_score1.Text = score1.ToString();
+                lbl_turn.Text = $"[X] {lbl_player1.Text} WON!";
+                CustomMessageBox.Show(this, $"[X] {lbl_player1.Text} WON!", "WINNER", "OK");
+                result = CustomMessageBox.Show(this, "DO YOU WANT A REMATCH?", "CONFIRMATION", "YES/NO");
+            }
             else if (winner == O)
-                MessageBox.Show($"O wins!");
-            ResetBoard();
+            {
+                score2 = Convert.ToInt32(lbl_score2.Text);
+                score2++;
+                lbl_score2.Text = score2.ToString();
+                if (Player2IsBot())
+                {
+                    lbl_turn.Text = $"[O] {chosenDifficulty}-BOT WON!";
+                    CustomMessageBox.Show(this, $"[O] {chosenDifficulty}-BOT WON!", "WINNER", "OK");
+                }
+                else
+                {
+                    lbl_turn.Text = $"[O] {lbl_player2.Text} WON!";
+                    CustomMessageBox.Show(this, $"[O] {lbl_player2.Text} WON!", "WINNER", "OK");
+                }
+                result = CustomMessageBox.Show(this, "DO YOU WANT A REMATCH?", "CONFIRMATION", "YES/NO");
+            }
+            YesNoResult(result);
         }
 
-        private void ResetBoard()
+        public void YesNoResult(DialogResult result)
+        {
+            if (result == DialogResult.Yes)
+            {
+                CustomMessageBox.Show(this, "RESTARTING THE MATCH...", "LOADING", "LOADING");
+                ResetBoard();
+            }
+            else
+            {
+                CustomMessageBox.Show(this, "RETURNING TO HOME...", "LOADING", "LOADING");
+                Menu menu = new Menu();
+
+                if (Player2IsBot())
+                {
+                    if (continueMatch)
+                    {
+                        process.UpdatePvEScoreHistory(lbl_player1.Text, score1, score2);
+                        continueMatch = false;
+                        Continue cont = new Continue(lbl_player1.Text);
+                        cont.Location = this.Location;
+                        cont.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        process.AddPvEScoreHistory(lbl_player1.Text, chosenDifficulty, score1, score2);
+                        menu.Location = this.Location;
+                        menu.Show();
+                        this.Hide();
+                    }
+                }
+                else
+                {
+                    process.AddPvPScoreHistory(lbl_player1.Text, lbl_player2.Text, score1, score2);
+                    menu.Location = this.Location;
+                    menu.Show();
+                    this.Hide();
+                }
+
+                score1 = 0;
+                score2 = 0;
+            }
+        }
+
+        public void ResetBoard()
         {
             foreach (var btn in buttons)
                 btn.Image = camouflage;
 
-            p1turn = true;
+            WhosTurn();
+        }
+
+        public void WhosTurn()
+        {
+            if (p1turn)
+                name = $"{lbl_player1.Text}";
+            else
+                if (Player2IsBot())
+                    name = $"{chosenDifficulty}-BOT";
+                else
+                    name = $"{lbl_player2.Text}";
+
+            if (p1turn)
+                lbl_turn.Text = $"[X] {name}'s TURN!";
+            else
+                if (Player2IsBot())
+                    lbl_turn.Text = $"[O] {chosenDifficulty}-BOT'S TURN!";
+                else
+                    lbl_turn.Text = $"[O] {name}'s TURN!";
+        }
+
+        public void EasyBotAI()
+        {
+            Random rng = new Random();
+            int choice;
+
+            AllPictureButtons();
+
+            for (int i = 0; i < 100; i++)
+            {
+                choice = rng.Next(0, 9);
+
+                if (buttons[choice].Image == camouflage && !p1turn)
+                {
+                    buttons[choice].Image = O;
+
+                    p1turn = true;
+                    WhosTurn();
+                    CheckForWinner();
+                    return;
+                }
+            }
+        }
+
+        public void MediumBotAI()
+        {
+            int[] position;
+            int choice;
+
+            AllPictureButtons();
+
+            for (int i = 0; i < 100; i++)
+            {
+                position = ThirdCircleFinder();
+                choice = position[0] * 3 + position[1];
+
+                if (buttons[choice].Image == camouflage && !p1turn)
+                {
+                    buttons[choice].Image = O;
+
+                    p1turn = true;
+                    WhosTurn();
+                    CheckForWinner();
+                    return;
+                }
+            }
+        }
+
+        public void HardBotAI()
+        {
+            int[] position;
+            int choice = 0;
+
+            AllPictureButtons();
+
+            for (int i = 0; i < 100; i++)
+            {
+                if (buttons[4].Image == camouflage)
+                {
+                    buttons[4].Image = O;
+
+                    p1turn = true;
+                    WhosTurn();
+                    CheckForWinner();
+                    return;
+                }
+                else
+                {
+                    if (!PossibleWin())
+                    {
+                        position = PriorityNumberFinder();
+                        choice = position[0] * 3 + position[1];
+                    }
+                    else
+                    {
+                        position = ThirdCircleFinder();
+                        choice = position[0] * 3 + position[1];
+                    }
+
+                    if (buttons[choice].Image == camouflage && !p1turn)
+                    {
+                        buttons[choice].Image = O;
+
+                        p1turn = true;
+                        WhosTurn();
+                        CheckForWinner();
+                        return;
+                    }
+                }
+            }
+        }
+
+        public int[] ThirdCircleFinder()
+        {
+            Image[,] oX = new Image[3, 3];
+
+            for (int i = 0; i < 9; i++)
+                oX[i / 3, i % 3] = buttons[i].Image;
+
+            int[] position = new int[2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (oX[i, 0] != X && oX[i, 1] == O && oX[i, 1] == oX[i, 2])
+                {
+                    position = [ i, 0 ];
+                    return position;
+                }
+                else if (oX[i, 1] != X && oX[i, 2] == O && oX[i, 2] == oX[i, 0])
+                {
+                    position = [i, 1];
+                    return position;
+                }
+                else if (oX[i, 2] != X && oX[i, 0] == O && oX[i, 0] == oX[i, 1])
+                {
+                    position = [i, 2];
+                    return position;
+                }
+                else if (oX[0, i] != X && oX[1, i] == O && oX[1, i] == oX[2, i])
+                {
+                    position = [0, i];
+                    return position;
+                }
+                else if (oX[1, i] != X && oX[2, i] == O && oX[2, i] == oX[0, i])
+                {
+                    position = [1, i];
+                    return position;
+                }
+                else if (oX[2, i] != X && oX[0, i] == O && oX[0, i] == oX[1, i])
+                {
+                    position = [2, i];
+                    return position;
+                }
+            }
+
+            if (oX[0, 0] != X && oX[1, 1] == O && oX[1, 1] == oX[2, 2])
+            {
+                position = [0, 0];
+                return position;
+            }
+            else if (oX[1, 1] != X && oX[2, 2] == O && oX[2, 2] == oX[0, 0])
+            {
+                position = [1, 1];
+                return position;
+            }
+            else if (oX[2, 2] != X && oX[0, 0] == O && oX[0, 0] == oX[1, 1])
+            {
+                position = [2, 2];
+                return position;
+            }
+            else if (oX[0, 2] != X && oX[1, 1] == O && oX[1, 1] == oX[2, 0])
+            {
+                position = [0, 2];
+                return position;
+            }
+            else if (oX[1, 1] != X && oX[2, 0] == O && oX[2, 0] == oX[0, 2])
+            {
+                position = [1, 1];
+                return position;
+            }
+            else if (oX[2, 0] != X && oX[0, 2] == O && oX[0, 2] == oX[1, 1])
+            {
+                position = [2, 0];
+                return position;
+            }
+            return XBlocker();
+        }
+
+        public int[] XBlocker()
+        {
+            Random rng = new Random();
+            Image[,] oX = new Image[3, 3];
+
+            for (int i = 0; i < 9; i++)
+                oX[i / 3, i % 3] = buttons[i].Image;
+
+            int[] position = new int[2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (oX[i, 0] != O && oX[i, 1] == X && oX[i, 1] == oX[i, 2])
+                {
+                    position = [i, 0];
+                    return position;
+                }
+                else if (oX[i, 1] != O && oX[i, 2] == X && oX[i, 2] == oX[i, 0])
+                {
+                    position = [i, 1];
+                    return position;
+                }
+                else if (oX[i, 2] != O && oX[i, 0] == X && oX[i, 0] == oX[i, 1])
+                {
+                    position = [i, 2];
+                    return position;
+                }
+                else if (oX[0, i] != O && oX[1, i] == X && oX[1, i] == oX[2, i])
+                {
+                    position = [0, i];
+                    return position;
+                }
+                else if (oX[1, i] != O && oX[2, i] == X && oX[2, i] == oX[0, i])
+                {
+                    position = [1, i];
+                    return position;
+                }
+                else if (oX[2, i] != O && oX[0, i] == X && oX[0, i] == oX[1, i])
+                {
+                    position = [2, i];
+                    return position;
+                }
+            }
+
+            if (oX[0, 0] != O && oX[1, 1] == X && oX[1, 1] == oX[2, 2])
+            {
+                position = [0, 0];
+                return position;
+            }
+            else if (oX[1, 1] != O && oX[2, 2] == X && oX[2, 2] == oX[0, 0])
+            {
+                position = [1, 1];
+                return position;
+            }
+            else if (oX[2, 2] != O && oX[0, 0] == X && oX[0, 0] == oX[1, 1])
+            {
+                position = [2, 2];
+                return position;
+            }
+            else if (oX[0, 2] != O && oX[1, 1] == X && oX[1, 1] == oX[2, 0])
+            {
+                position = [0, 2];
+                return position;
+            }
+            else if (oX[1, 1] != O && oX[2, 0] == X && oX[2, 0] == oX[0, 2])
+            {
+                position = [1, 1];
+                return position;
+            }
+            else if (oX[2, 0] != O && oX[0, 2] == X && oX[0, 2] == oX[1, 1])
+            {
+                position = [2, 0];
+                return position;
+            }
+
+            int[] random = { rng.Next(0, 3), rng.Next(0, 3) };
+            return random;
+        }
+
+        public bool PossibleWin()
+        {
+            Random rng = new Random();
+            Image[,] oX = new Image[3, 3];
+
+            for (int i = 0; i < 9; i++)
+                oX[i / 3, i % 3] = buttons[i].Image;
+
+            int[] position = new int[2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                if (oX[i, 0] != O && oX[i, 0] != X && oX[i, 1] == oX[i, 2])
+                    return true;
+
+                else if (oX[i, 1] != O && oX[i, 1] != X && oX[i, 2] == oX[i, 0])
+                    return true;
+                
+                else if (oX[i, 2] != O && oX[i, 2] != X && oX[i, 0] == oX[i, 1])
+                    return true;
+                
+                else if (oX[0, i] != O && oX[0, i] != X && oX[1, i] == oX[2, i])
+                    return true;
+                
+                else if (oX[1, i] != O && oX[1, i] != X && oX[2, i] == oX[0, i])
+                    return true;
+                
+                else if (oX[2, i] != O && oX[2, i] != X && oX[0, i] == oX[1, i])
+                    return true;
+            }
+
+            if (oX[0, 0] != O && oX[0, 0] != X && oX[1, 1] == oX[2, 2])
+                return true;
+            
+            else if (oX[1, 1] != O && oX[1, 1] != X && oX[2, 2] == oX[0, 0])
+                return true;
+            
+            else if (oX[2, 2] != O && oX[2, 2] != X && oX[0, 0] == oX[1, 1])
+                return true;
+            
+            else if (oX[0, 2] != O && oX[0, 2] != X && oX[1, 1] == oX[2, 0])
+                return true;
+            
+            else if (oX[1, 1] != O && oX[1, 1] != X && oX[2, 0] == oX[0, 2])
+                return true;
+            
+            else if (oX[2, 0] != O && oX[2, 0] != X && oX[0, 2] == oX[1, 1])
+                return true;
+
+            return false;
+        }
+
+        public int[] PriorityNumberFinder()
+        {
+            Random rng = new Random();
+
+            Image[,] oX = new Image[3, 3];
+            for (int i = 0; i < 9; i++)
+                oX[i / 3, i % 3] = buttons[i].Image;
+
+            Image[] priority1 = { oX[0, 0], oX[0, 2], oX[2, 0], oX[2, 2] }, priority2 = { oX[0, 1], oX[1, 0], oX[1, 2], oX[2, 1] };
+
+            int[] position = new int[2];
+            int index = 0;
+
+            foreach (var image in oX)
+            {
+                if (oX[0, 0] == oX[0, 2] || oX[0, 2] == oX[2, 0] || oX[2, 0] == oX[2, 2] || oX[2, 2] == oX[0, 0])
+                {
+                    index = rng.Next(0, priority2.Length);
+
+                    if (image == priority2[index])
+                    {
+                        if (image == oX[0, 1])
+                            position = [0, 1];
+
+                        else if (image == oX[1, 0])
+                            position = [1, 0];
+
+                        else if (image == oX[1, 2])
+                            position = [1, 2];
+
+                        else if (image == oX[2, 1])
+                            position = [2, 1];
+
+                        return position;
+                    }
+                }
+                else
+                {
+                    index = rng.Next(0, priority1.Length);
+
+                    if (image == priority1[index])
+                    {
+                        if (image == oX[0, 0])
+                            position = [0, 0];
+
+                        else if (image == oX[0, 2])
+                            position = [0, 2];
+
+                        else if (image == oX[2, 0])
+                            position = [2, 0];
+
+                        else if (image == oX[2, 2])
+                            position = [2, 2];
+
+                        return position;
+                    }
+                }
+            }
+            int[] random = { rng.Next(0, 3), rng.Next(0, 3) };
+            return random;
+        }
+
+        public bool Player2IsBot()
+        {
+            if (lbl_player2.Text == "BOT")
+                return true;
+            else
+                return false;
+        }
+
+        public void AllPictureButtons()
+        {
+            buttons = new PictureBox[] { pb_btn1, pb_btn2, pb_btn3, pb_btn4, pb_btn5, pb_btn6, pb_btn7, pb_btn8, pb_btn9 };
         }
 
         public void Components()
@@ -150,32 +681,23 @@ namespace TTT_Forms
             pb_ui_page.Image = Image.FromFile("pages\\ui_page.png");
             pb_ui_page.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            pb_btn1.Image = camouflage;
-            pb_btn2.Image = camouflage;
-            pb_btn3.Image = camouflage;
-            pb_btn4.Image = camouflage;
-            pb_btn5.Image = camouflage;
-            pb_btn6.Image = camouflage;
-            pb_btn7.Image = camouflage;
-            pb_btn8.Image = camouflage;
-            pb_btn9.Image = camouflage;
+            buttons = new PictureBox[] { pb_btn1, pb_btn2, pb_btn3, pb_btn4, pb_btn5, pb_btn6, pb_btn7, pb_btn8, pb_btn9 };
 
-            lbl_player1.BackColor = Color.Transparent;
-            lbl_player1.ForeColor = Color.FromArgb(152, 161, 188);
+            foreach (var btn in buttons)
+            {
+                btn.Parent = pb_ui_page;
+                btn.BackColor = Color.Transparent;
+                btn.Image = camouflage;
+            }
 
-            lbl_player2.BackColor = Color.Transparent;
-            lbl_player2.ForeColor = Color.FromArgb(152, 161, 188);
+            labels = new Label[] { lbl_player1, lbl_player2, lbl_score1, lbl_score2, lbl_turn };
 
-            lbl_score1.BackColor = Color.Transparent;
-            lbl_score1.ForeColor = Color.FromArgb(152, 161, 188);
-
-            lbl_score2.BackColor = Color.Transparent;
-            lbl_score2.ForeColor = Color.FromArgb(152, 161, 188);
-
-            lbl_turn.BackColor = Color.Transparent;
-            lbl_turn.ForeColor = Color.FromArgb(152, 161, 188);
+            foreach (var lbl in labels)
+            {
+                lbl.Parent = pb_ui_page;
+                lbl.BackColor = Color.Transparent;
+                lbl.ForeColor = Color.FromArgb(152, 161, 188);
+            }
         }
-
-
     }
 }

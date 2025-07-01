@@ -2,17 +2,20 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TTT_BusinessLogic;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace TTT_Forms
 {
     public partial class PVE : Form
     {
+        TTT_Process process = new TTT_Process();
         public PVE()
         {
             InitializeComponent();
@@ -69,10 +72,35 @@ namespace TTT_Forms
 
         private void Continue_Button(object sender, EventArgs e)
         {
-            Continue continueMatch = new Continue();
-            continueMatch.Location = this.Location;
-            continueMatch.Show();
-            this.Hide();
+            Continue_Match();
+        }
+
+        public void Continue_Match()
+        {
+            string username = CustomMessageBox.ShowInput(this, "ENTER YOUR USERNAME", "VERIFICATION", "INPUT");
+
+            if (process.ValidateUsername(username.ToUpper()))
+            {
+                CustomMessageBox.Show(this, "CORRECT USERNAME FOUND!", "SUCCESS", "LONG");
+
+                Continue continueMatch = new Continue(username);
+                continueMatch.Location = this.Location;
+                continueMatch.Show();
+                this.Hide();
+            }
+            else if (username == "CANCEL") ;
+
+            else if (username == "")
+                CustomMessageBox.Show(this, "INVALID INPUT!", "ERROR", "OK");
+
+            else if (process.GetPvEScoreHistory().Count == 0)
+                CustomMessageBox.Show(this, "NO CURRENT USERS!", "ERROR", "LONG");
+
+            else
+            {
+                CustomMessageBox.Show(this, "CANNOT FIND USERNAME!", "ERROR", "LONG");
+                Continue_Match();
+            }
         }
     }
 }
